@@ -34,8 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Webfox\\LaravelBackedEnums\\": "src",
-            "Webfox\\LaravelBackedEnums\\Database\\Factories\\": "database/factories"
+            "Webfox\\LaravelBackedEnums\\": "src"
         }
     },
     "autoload-dev": {
@@ -50,16 +49,17 @@
         "format": "vendor/bin/pint"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
                 "Webfox\\LaravelBackedEnums\\LaravelBackedEnumsServiceProvider"
-            ],
-            "aliases": {
-                "LaravelBackedEnums": "Webfox\\LaravelBackedEnums\\Facades\\LaravelBackedEnums"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
