@@ -91,3 +91,15 @@ And their negations e.g.
 ->isNotAny([VolumeUnitEnum::MILLIGRAMS, VolumeUnitEnum::GRAMS])
 ```
 
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Contributing
+
+We welcome all contributors to the project.
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
