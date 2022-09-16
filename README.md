@@ -63,15 +63,15 @@ public function withMeta(): array
     {
         return match ($this) {
             self::MILLIGRAMS                => [
-                'color' => 'bg-green-100',
+                'background_color' => 'bg-green-100',
                 'text_color' => 'text-green-800',
             ],
             self::GRAMS                     => [
-                'color' => 'bg-red-100',
+                'background_color' => 'bg-red-100',
                 'text_color' => 'text-red-800',
             ],
             self::KILOGRAMS, self::TONNE    => [
-                'color' => 'bg-gray-100',
+                'background_color' => 'bg-gray-100',
                 'text_color' => 'text-gray-800',
             ],
             default                         => throw new \Exception('Unexpected match value'),
@@ -99,7 +99,7 @@ returns
         'value' => 'Milligrams',
         'label' => 'mg',
         'meta'  => [
-            'color' => 'bg-green-100',
+            'background_color' => 'bg-green-100',
             'text_color' => 'text-green-800',
         ],
     ],
@@ -107,7 +107,7 @@ returns
         'value' => 'Grams',
         'label' => 'g',
         'meta'  => [
-            'color' => 'bg-red-100',
+            'background_color' => 'bg-red-100',
             'text_color' => 'text-red-800',
         ],
         ...
