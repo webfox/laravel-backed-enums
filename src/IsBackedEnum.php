@@ -27,6 +27,18 @@ trait IsBackedEnum
         return array_map(fn($enum) => $enum->name, self::cases());
     }
 
+    public static function map(): array
+    {
+        static::ensureImplementsInterface();
+        $array = [];
+
+        foreach (self::cases() as $enum) {
+            $array[$enum->name] = $enum->label();
+        }
+
+        return $array;
+    }
+
     public static function labels(): array
     {
         static::ensureImplementsInterface();
