@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "webfox/laravel-backed-enums",
+    "description": "Package for using PHP 8.1 backed enums in laravel. ",
     "keywords": [
-        ":vendor_name",
+        "webfox",
         "laravel",
-        ":package_slug"
+        "laravel-backed-enums"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/webfox/laravel-backed-enums",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Webfox Developments Ltd",
+            "email": "developers@webfox.co.nz",
             "role": "Developer"
         }
     ],
@@ -30,18 +30,17 @@
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
-        "phpunit/phpunit": "^9.5",
-        "spatie/laravel-ray": "^1.26"
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Webfox\\LaravelBackedEnums\\": "src",
+            "Webfox\\LaravelBackedEnums\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Webfox\\LaravelBackedEnums\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -56,10 +55,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Webfox\\LaravelBackedEnums\\LaravelBackedEnumsServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelBackedEnums": "Webfox\\LaravelBackedEnums\\Facades\\LaravelBackedEnums"
             }
         }
     },
