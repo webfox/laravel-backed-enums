@@ -217,7 +217,8 @@ An alias for toArray.
 
 ### isA/isAn
 Allows you to check if an enum is a given value. Returns a boolean.  
-! `isAn` is just an alias for `isA`.
+> **Note**
+> `isAn` is just an alias for `isA`.
 
 #### Usage
 
@@ -228,7 +229,8 @@ VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::MILLIGRAMS); //true
 
 ### isNotA/isNotAn
 Allows you to check if an enum is not a given value. Returns a boolean.
-! `isNotAn` is just an alias for `isNotA`.
+> **Note**
+> `isNotAn` is just an alias for `isNotA`.
 
 #### Usage
 
