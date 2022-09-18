@@ -215,8 +215,9 @@ returns
 
 An alias for toArray.
 
-### isA
-Allows you to check if an enum is a given value. Returns a boolean.
+### isA/isAn
+Allows you to check if an enum is a given value. Returns a boolean.  
+! `isAn` is just an alias for `isA`.
 
 #### Usage
 
@@ -225,12 +226,16 @@ VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::GRAMS); //false
 VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::MILLIGRAMS); //true
 ```
 
-#### Negation
-The negated method also exists. Being isNot
+### isNotA/isNotAn
+Allows you to check if an enum is not a given value. Returns a boolean.
+! `isNotAn` is just an alias for `isNotA`.
 
+#### Usage
 
-### isAn
-Alias for isA.
+```php
+VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::GRAMS); //true
+VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::MILLIGRAMS); //false
+```
 
 ### isAny
 Allows you to check if an enum is contained in an array. Returns a boolean.
@@ -242,8 +247,15 @@ VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::TONNE]
 VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::MILLIGRAMS]); // true
 ```
 
-#### Negation
-The negated method also exists. Being isNotAny
+### isNotAny
+Allows you to check if an enum is not contained in an array. Returns a boolean.
+
+#### Usage
+
+```php
+VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::TONNE]); // true
+VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::MILLIGRAMS]); // false
+```
 
 ## Changelog
 
