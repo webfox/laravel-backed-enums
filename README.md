@@ -167,6 +167,26 @@ returns
 ]
 ```
 
+### map
+
+Returns an array of all enum values mapping to their label.
+
+#### Usage
+
+```php
+VolumeUnitEnum::map();
+```
+
+returns
+
+```php
+[
+    'MILLIGRAM'=>'mg',
+    'GRAM'     =>'g',
+    'KILOGRAM' =>'kg',
+    'TONNE'    =>'t',
+]
+```
 
 ### toArray
 
