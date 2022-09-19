@@ -1,6 +1,6 @@
 {
     "name": "webfox/laravel-backed-enums",
-    "description": "Package for using PHP 8.1 backed enums in laravel. ",
+    "description": "Supercharge your PHP8 backed enums with superpowers like localization support and fluent comparison methods.",
     "keywords": [
         "webfox",
         "laravel",
