@@ -15,10 +15,10 @@ composer require webfox/laravel-backed-enums
 
 ## Usage
 
-### Using the trait
+### Setup your enum
 
-The enum you create must implement BackedEnum, this interface allows the toArray and toJson functions from within IsBackEnum to be called on your
-enum.
+The enum you create must implement the `BackedEnum` interface and also use the `IsBackedEnum` trait.
+The interface is required for Laravel to cast your enum correctly and the trait is what gives your enum its superpowers.
 
 ```php
 use Webfox\LaravelBackedEnums\BackedEnum;
@@ -43,7 +43,7 @@ Create enums.php lang file and create labels for your enum values.
 // resources/lang/en/enums.php
 
 return [
-     VolumeUnitEnum::class          => [
+     VolumeUnitEnum::class => [
         VolumeUnitEnum::MILLIGRAMS->name => "mg",
         VolumeUnitEnum::GRAMS->name      => "g",
         VolumeUnitEnum::KILOGRAMS->name  => "kg",
@@ -51,35 +51,45 @@ return [
      ]
 ];
 ```
+You may then access these localized values using the `->label()` or `::labelFor()` methods
+```php
+VolumeUnitEnum::MILLIGRAMS->label(); // "mg"
+VolumeUnitEnum::labelFor(VolumeUnitEnum::TONNE); // "t"
+```
+If you do not specify a label in the lang file these methods will return the translation key e.g. `enums.\\App\\Enums\\VolumeUnitEnum.GRAMS`
 
 ### Meta data
 
 Adding metadata allows you to return additional values alongside the label and values.
 
-Create a withMeta function on your enum to add metadata.
+Create a withMeta method on your enum to add metadata.
 
 ```php
 public function withMeta(): array
-    {
-        return match ($this) {
-            self::MILLIGRAMS                => [
-                'background_color' => 'bg-green-100',
-                'text_color' => 'text-green-800',
-            ],
-            self::GRAMS                     => [
-                'background_color' => 'bg-red-100',
-                'text_color' => 'text-red-800',
-            ],
-            self::KILOGRAMS, self::TONNE    => [
-                'background_color' => 'bg-gray-100',
-                'text_color' => 'text-gray-800',
-            ],
-            default                         => throw new \Exception('Unexpected match value'),
-        };
-    }
+{
+    return match ($this) {
+        self::MILLIGRAMS                => [
+            'background_color' => 'bg-green-100',
+            'text_color'       => 'text-green-800',
+        ],
+        self::GRAMS                     => [
+            'background_color' => 'bg-red-100',
+            'text_color'       => 'text-red-800',
+        ],
+        self::KILOGRAMS, self::TONNE    => [
+            'background_color' => 'bg-gray-100',
+            'text_color'       => 'text-gray-800',
+        ],
+        default                         => [
+            'background_color' => 'bg-blue-100',
+            'text_color'       => 'text-blue-800',
+        ],
+    };
+}
 ```
+If you do not specify a `withMeta` method, meta will be an empty array.
 
-## Other functions
+## Other methods
 
 ### options
 
@@ -100,7 +110,7 @@ returns
         'label' => 'mg',
         'meta'  => [
             'background_color' => 'bg-green-100',
-            'text_color' => 'text-green-800',
+            'text_color'       => 'text-green-800',
         ],
     ],
     [
@@ -108,7 +118,7 @@ returns
         'label' => 'g',
         'meta'  => [
             'background_color' => 'bg-red-100',
-            'text_color' => 'text-red-800',
+            'text_color'       => 'text-red-800',
         ],
         ...
     ]
@@ -129,10 +139,10 @@ returns
 
 ```php
 [
-    'Milligrams',
-    'Grams',
-    'Kilograms',
-    'Tonne',
+    'MILLIGRAMS',
+    'GRAMS',
+    'KILOGRAMS',
+    'TONNE',
 ]
 ```
 
@@ -178,40 +188,6 @@ returns
 ]
 ```
 
-
-### labelFor
-
-Returns the label for a given enum name.
-
-#### Usage
-
-```php
-VolumeUnitEnum::labelFor(VolumeUnitEnum::MILLIGRAMS);
-```
-
-returns
-
-```php
-'mg'
-```
-
-### label
-
-Returns the label for the current enum.
-
-#### Usage
-
-```php
-VolumeUnitEnum::MILLIGRAMS->label();
-```
-
-returns
-
-```php
-'mg'
-```
-
-
 ### toArray
 
 Returns an array of a single enum value with its label and metadata.
@@ -239,21 +215,29 @@ returns
 
 An alias for toArray.
 
-### isA
-Allows you to check if an enum is a given value. Returns a boolean.
+### isA/isAn
+Allows you to check if an enum is a given value. Returns a boolean.  
+> **Note**
+> `isAn` is just an alias for `isA`.
 
 #### Usage
 
 ```php
-VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::GRAMS);
+VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::GRAMS); //false
+VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::MILLIGRAMS); //true
 ```
 
-#### Negation
-The negated method also exists. Being isNot
+### isNotA/isNotAn
+Allows you to check if an enum is not a given value. Returns a boolean.
+> **Note**
+> `isNotAn` is just an alias for `isNotA`.
 
+#### Usage
 
-### isAn
-Alias for isA.
+```php
+VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::GRAMS); //true
+VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::MILLIGRAMS); //false
+```
 
 ### isAny
 Allows you to check if an enum is contained in an array. Returns a boolean.
@@ -261,11 +245,19 @@ Allows you to check if an enum is contained in an array. Returns a boolean.
 #### Usage
 
 ```php
-VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::TONNE]);
+VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::TONNE]); // false
+VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::MILLIGRAMS]); // true
 ```
 
-#### Negation
-The negated method also exists. Being isNotAny
+### isNotAny
+Allows you to check if an enum is not contained in an array. Returns a boolean.
+
+#### Usage
+
+```php
+VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::TONNE]); // true
+VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::MILLIGRAMS]); // false
+```
 
 ## Changelog
 
