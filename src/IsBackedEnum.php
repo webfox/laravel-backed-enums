@@ -21,10 +21,16 @@ trait IsBackedEnum
         return array_map(fn($enum) => $enum->toArray(), self::cases());
     }
 
-    public static function values(): array
+    public static function names(): array
     {
         static::ensureImplementsInterface();
         return array_map(fn($enum) => $enum->name, self::cases());
+    }
+
+    public static function values(): array
+    {
+        static::ensureImplementsInterface();
+        return array_map(fn($enum) => $enum->value, self::cases());
     }
 
     public static function map(): array
@@ -72,7 +78,8 @@ trait IsBackedEnum
     {
         static::ensureImplementsInterface();
         return [
-            'value' => $this->name,
+            'name'  => $this->name,
+            'value' => $this->value,
             'label' => $this->label(),
             'meta'  => $this->withMeta(),
         ];
