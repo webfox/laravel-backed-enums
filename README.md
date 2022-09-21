@@ -44,10 +44,10 @@ Create enums.php lang file and create labels for your enum values.
 
 return [
      VolumeUnitEnum::class => [
-        VolumeUnitEnum::MILLIGRAMS->name => "mg",
-        VolumeUnitEnum::GRAMS->name      => "g",
-        VolumeUnitEnum::KILOGRAMS->name  => "kg",
-        VolumeUnitEnum::TONNE->name      => "t"
+        VolumeUnitEnum::MILLIGRAMS->value => "mg",
+        VolumeUnitEnum::GRAMS->value      => "g",
+        VolumeUnitEnum::KILOGRAMS->value  => "kg",
+        VolumeUnitEnum::TONNE->value      => "t"
      ]
 ];
 ```
