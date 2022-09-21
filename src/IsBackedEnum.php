@@ -61,7 +61,7 @@ trait IsBackedEnum
             $value->value
         );
 
-        return app('translator')->has($lang_key) ? __($lang_key) : $value;
+        return app('translator')->has($lang_key) ? __($lang_key) : $value->value;
     }
 
     public function label(): string
