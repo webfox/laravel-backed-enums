@@ -131,6 +131,27 @@ returns
 ]
 ```
 
+### names
+
+Returns an array of all enum values.
+
+#### Usage
+
+```php
+VolumeUnitEnum::names();
+```
+
+returns
+
+```php
+[
+    'MILLIGRAMS',
+    'GRAMS',
+    'KILOGRAMS',
+    'TONNE',
+]
+```
+
 ### values
 
 Returns an array of all enum values.
