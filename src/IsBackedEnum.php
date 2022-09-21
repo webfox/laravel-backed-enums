@@ -72,7 +72,8 @@ trait IsBackedEnum
     {
         static::ensureImplementsInterface();
         return [
-            'value' => $this->name,
+            'name'  => $this->name,
+            'value' => $this->value,
             'label' => $this->label(),
             'meta'  => $this->withMeta(),
         ];

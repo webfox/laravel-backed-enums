@@ -51,11 +51,14 @@ return [
      ]
 ];
 ```
+
 You may then access these localized values using the `->label()` or `::labelFor()` methods
+
 ```php
 VolumeUnitEnum::MILLIGRAMS->label(); // "mg"
 VolumeUnitEnum::labelFor(VolumeUnitEnum::TONNE); // "t"
 ```
+
 If you do not specify a label in the lang file these methods will return the translation key e.g. `enums.\\App\\Enums\\VolumeUnitEnum.GRAMS`
 
 ### Meta data
@@ -87,6 +90,7 @@ public function withMeta(): array
     };
 }
 ```
+
 If you do not specify a `withMeta` method, meta will be an empty array.
 
 ## Other methods
@@ -106,7 +110,8 @@ returns
 ```php
 [
     [
-        'value' => 'Milligrams',
+        'name'  => 'MILLIGRAMS'
+        'value' => 'MILLIGRAMS',
         'label' => 'mg',
         'meta'  => [
             'background_color' => 'bg-green-100',
@@ -114,7 +119,8 @@ returns
         ],
     ],
     [
-        'value' => 'Grams',
+        'name'  => 'GRAMS',
+        'value' => 'GRAMS',
         'label' => 'g',
         'meta'  => [
             'background_color' => 'bg-red-100',
@@ -181,9 +187,9 @@ returns
 
 ```php
 [
-    'MILLIGRAM'=>'mg',
-    'GRAM'     =>'g',
-    'KILOGRAM' =>'kg',
+    'MILLIGRAMS'=>'mg',
+    'GRAMS'     =>'g',
+    'KILOGRAMS' =>'kg',
     'TONNE'    =>'t',
 ]
 ```
@@ -202,7 +208,8 @@ returns
 
 ```php
 [
-    'value' => 'Milligrams',
+    'name'  => 'MILLIGRAMS'
+    'value' => 'MILLIGRAMS',
     'label' => 'mg',
     'meta'  => [
         'color' => 'bg-green-100',
@@ -216,7 +223,8 @@ returns
 An alias for toArray.
 
 ### isA/isAn
-Allows you to check if an enum is a given value. Returns a boolean.  
+
+Allows you to check if an enum is a given value. Returns a boolean.
 > **Note**
 > `isAn` is just an alias for `isA`.
 
@@ -228,6 +236,7 @@ VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::MILLIGRAMS); //true
 ```
 
 ### isNotA/isNotAn
+
 Allows you to check if an enum is not a given value. Returns a boolean.
 > **Note**
 > `isNotAn` is just an alias for `isNotA`.
@@ -240,6 +249,7 @@ VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::MILLIGRAMS); //false
 ```
 
 ### isAny
+
 Allows you to check if an enum is contained in an array. Returns a boolean.
 
 #### Usage
@@ -250,6 +260,7 @@ VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::MILLIG
 ```
 
 ### isNotAny
+
 Allows you to check if an enum is not contained in an array. Returns a boolean.
 
 #### Usage
