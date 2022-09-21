@@ -59,7 +59,7 @@ VolumeUnitEnum::MILLIGRAMS->label(); // "mg"
 VolumeUnitEnum::labelFor(VolumeUnitEnum::TONNE); // "t"
 ```
 
-If you do not specify a label in the lang file these methods will return the translation key e.g. `enums.\\App\\Enums\\VolumeUnitEnum.GRAMS`
+If you do not specify a label in the lang file these methods will return the value assigned to the enum inside the enum file. e.g MILLIGRAMS label will be MILLIGRAMS
 
 ### Meta data
 
