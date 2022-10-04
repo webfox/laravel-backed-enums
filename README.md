@@ -52,11 +52,14 @@ return [
 ];
 ```
 
-You may then access these localized values using the `->label()` or `::labelFor()` methods
+You may then access these localized values using the `->label()` or `::labelFor()` methods.  
+Additionally rendering the enum in a blade template will render the label.
 
 ```php
 VolumeUnitEnum::MILLIGRAMS->label(); // "mg"
 VolumeUnitEnum::labelFor(VolumeUnitEnum::TONNE); // "t"
+// in blade
+{{ VolumeUnitEnum::KILOGRAMS }} // "kg"
 ```
 
 If you do not specify a label in the lang file these methods will return the value assigned to the enum inside the enum file. e.g MILLIGRAMS label will be MILLIGRAMS
@@ -223,6 +226,30 @@ Returns an array of a single enum value with its label and metadata.
 
 ```php
 VolumeUnitEnum::MILLIGRAMS->toArray();
+```
+
+returns
+
+```php
+[
+    'name'  => 'MILLIGRAMS'
+    'value' => 'MILLIGRAMS',
+    'label' => 'mg',
+    'meta'  => [
+        'color' => 'bg-green-100',
+        'text_color' => 'text-green-800',
+    ],
+]
+```
+
+### toHtml
+
+An alias of ::label(). Used to satisfy Laravel's Htmlable interface.
+
+#### Usage
+
+```php
+VolumeUnitEnum::MILLIGRAMS->toHtml();
 ```
 
 returns

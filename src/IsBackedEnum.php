@@ -4,7 +4,7 @@ namespace Webfox\LaravelBackedEnums;
 
 
 /**
- * @implements \Webfox\LaravelBackedEnums\BackedEnum;
+ * @implements \Webfox\LaravelBackedEnums\BackedEnum<string,string>
  */
 trait IsBackedEnum
 {
@@ -83,6 +83,12 @@ trait IsBackedEnum
             'label' => $this->label(),
             'meta'  => $this->withMeta(),
         ];
+    }
+
+    public function toHtml(): string
+    {
+        static::ensureImplementsInterface();
+        return $this->label();
     }
 
     public function toJson($options = 0): array
