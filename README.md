@@ -1,8 +1,6 @@
-# Package for using PHP 8.1 backed enums in laravel.
+![Banner Image](https://banners.beyondco.de/Laravel%20Backed%20Enums.png?theme=light&packageManager=composer+require&packageName=webfox%2Flaravel-backed-enums&pattern=architect&style=style_1&description=Supercharge+your+PHP8+backed+enums+in+Laravel.&md=1&showWatermark=0&fontSize=125px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/webfox/laravel-backed-enums.svg?style=flat-square)](https://packagist.org/packages/webfox/laravel-backed-enums)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/webfox/laravel-backed-enums/run-tests?label=tests)](https://github.com/webfox/laravel-backed-enums/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/webfox/laravel-backed-enums/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/webfox/laravel-backed-enums/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/webfox/laravel-backed-enums.svg?style=flat-square)](https://packagist.org/packages/webfox/laravel-backed-enums)
 
 This package supercharges your PHP8 backed enums with superpowers like localization support and fluent comparison methods.
