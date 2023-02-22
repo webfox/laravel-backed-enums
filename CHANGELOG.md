@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-backed-enums` will be documented in this file.
 
+## v1.2.1 - 2023-02-22
+
+### What's Changed
+
+- Add support for laravel 10
+
 ## v1.1.0 - 2022-10-04
 
 ### What's Changed
