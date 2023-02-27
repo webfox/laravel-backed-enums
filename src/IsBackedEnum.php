@@ -5,10 +5,10 @@ namespace Webfox\LaravelBackedEnums;
 
 /**
  * @implements \Webfox\LaravelBackedEnums\BackedEnum<string,string>
+ * @mixin \BackedEnum<string,string>
  */
 trait IsBackedEnum
 {
-
 
     protected static function ensureImplementsInterface(): void
     {
@@ -100,7 +100,7 @@ trait IsBackedEnum
     public function isA($value): bool
     {
         static::ensureImplementsInterface();
-        return $this == $value;
+        return $this->isAny([$value]);
     }
 
     public function isAn(string $value): bool
@@ -118,6 +118,12 @@ trait IsBackedEnum
     public function isAny(array $values): bool
     {
         static::ensureImplementsInterface();
+
+        if (empty($values)) {
+            return false;
+        }
+
+        $values = array_map(fn($value) => $value instanceof static ? $value : static::from($value), $values);
         return in_array($this, $values);
     }
 
