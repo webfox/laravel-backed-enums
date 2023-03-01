@@ -268,30 +268,32 @@ returns
 
 An alias for toArray.
 
-### isA/isAn
+### is/isA/isAn
 
 Allows you to check if an enum is a given value. Returns a boolean.
 > **Note**
-> `isAn` is just an alias for `isA`.
+> `isA`, `isAn` are just aliases for `is`.
 
 #### Usage
 
 ```php
-VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::GRAMS); //false
-VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::MILLIGRAMS); //true
+VolumeUnitEnum::MILLIGRAMS->is(VolumeUnitEnum::MILLIGRAMS); //true
+VolumeUnitEnum::MILLIGRAMS->is('MILLIGRAMS');               //true
+VolumeUnitEnum::MILLIGRAMS->is('invalid');                  //exception
 ```
 
-### isNotA/isNotAn
+### isNot/isNotA/isNotAn
 
 Allows you to check if an enum is not a given value. Returns a boolean.
 > **Note**
-> `isNotAn` is just an alias for `isNotA`.
+> `isNotA` and `isNotAn` are just aliases for `isNot`.
 
 #### Usage
 
 ```php
-VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::GRAMS); //true
-VolumeUnitEnum::MILLIGRAMS->isA(VolumeUnitEnum::MILLIGRAMS); //false
+VolumeUnitEnum::MILLIGRAMS->isNot(VolumeUnitEnum::GRAMS); //true
+VolumeUnitEnum::MILLIGRAMS->isNot('GRAMS');               //true
+VolumeUnitEnum::MILLIGRAMS->isNot('invalid');             //exception
 ```
 
 ### isAny
@@ -301,7 +303,7 @@ Allows you to check if an enum is contained in an array. Returns a boolean.
 #### Usage
 
 ```php
-VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::TONNE]); // false
+VolumeUnitEnum::MILLIGRAMS->isAny(['GRAMS', VolumeUnitEnum::TONNE]);                    // false
 VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::MILLIGRAMS]); // true
 ```
 
@@ -312,8 +314,8 @@ Allows you to check if an enum is not contained in an array. Returns a boolean.
 #### Usage
 
 ```php
-VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::TONNE]); // true
-VolumeUnitEnum::MILLIGRAMS->isAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::MILLIGRAMS]); // false
+VolumeUnitEnum::MILLIGRAMS->isNotAny(['GRAMS', VolumeUnitEnum::TONNE]);                    // true
+VolumeUnitEnum::MILLIGRAMS->isNotAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::MILLIGRAMS]); // false
 ```
 
 ## Changelog

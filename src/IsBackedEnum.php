@@ -97,22 +97,22 @@ trait IsBackedEnum
         return $this->toArray();
     }
 
-    public function isA($value): bool
+    public function is(string|self $value): bool
     {
         static::ensureImplementsInterface();
         return $this->isAny([$value]);
     }
 
-    public function isAn(string $value): bool
+    public function isA(string|self $value): bool
     {
         static::ensureImplementsInterface();
-        return $this->isA($value);
+        return $this->is($value);
     }
 
-    public function isNot(string $value): bool
+    public function isAn(string|self $value): bool
     {
         static::ensureImplementsInterface();
-        return !$this->isA($value);
+        return $this->is($value);
     }
 
     public function isAny(array $values): bool
@@ -125,6 +125,24 @@ trait IsBackedEnum
 
         $values = array_map(fn($value) => $value instanceof static ? $value : static::from($value), $values);
         return in_array($this, $values);
+    }
+
+    public function isNot(string|self $value): bool
+    {
+        static::ensureImplementsInterface();
+        return !$this->isAny([$value]);
+    }
+
+    public function isNotA(string|self $value): bool
+    {
+        static::ensureImplementsInterface();
+        return $this->isNot($value);
+    }
+
+    public function isNotAn(string|self $value): bool
+    {
+        static::ensureImplementsInterface();
+        return $this->isNot($value);
     }
 
     public function isNotAny(array $values): bool
