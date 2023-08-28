@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-backed-enums` will be documented in this file.
 
+## v2.0.0 - 2023-08-28
+
+### What's Changed
+
+- Use value in `map()` method
+
 ## v1.2.3 - 2023-03-02
 
 ### What's Changed

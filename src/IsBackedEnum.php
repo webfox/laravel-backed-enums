@@ -39,7 +39,7 @@ trait IsBackedEnum
         $array = [];
 
         foreach (self::cases() as $enum) {
-            $array[$enum->name] = $enum->label();
+            $array[$enum->value] = $enum->label();
         }
 
         return $array;
