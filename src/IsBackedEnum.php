@@ -65,7 +65,7 @@ trait IsBackedEnum
         return app('translator')->has($lang_key) ? __($lang_key) : $value->value;
     }
 
-    public static function rule(): Rules\Enum
+    public static function rule(): EnumValidationRule
     {
         static::ensureImplementsInterface();
         return new EnumValidationRule(static::class);
