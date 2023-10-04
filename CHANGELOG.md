@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-backed-enums` will be documented in this file.
 
+## v2.1.0 - 2023-10-05
+
+- Add static `rule()` method as a shortcut for the laravel validation rule. 
+
 ## v2.0.0 - 2023-08-28
 
 ### What's Changed
