@@ -318,6 +318,21 @@ VolumeUnitEnum::MILLIGRAMS->isNotAny(['GRAMS', VolumeUnitEnum::TONNE]);         
 VolumeUnitEnum::MILLIGRAMS->isNotAny([VolumeUnitEnum::GRAMS, VolumeUnitEnum::MILLIGRAMS]); // false
 ```
 
+### rule
+
+The backed enums may be validated using Laravel's standard Enum validation rule - `new Illuminate\Validation\Rules\Enum(VolumeUnitEnum::class)`.  
+This method a shortcut for the validation rule.
+
+#### Usage
+```
+public function rules(): array
+{
+    return [
+        'volume_unit' => [VolumeUnitEnum::rule()],
+    ];
+}
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
