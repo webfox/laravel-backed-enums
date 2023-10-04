@@ -2,6 +2,7 @@
 
 namespace Webfox\LaravelBackedEnums;
 
+use Illuminate\Validation\Rules\Enum as EnumValidationRule;
 
 /**
  * @implements \Webfox\LaravelBackedEnums\BackedEnum<string,string>
@@ -64,13 +65,21 @@ trait IsBackedEnum
         return app('translator')->has($lang_key) ? __($lang_key) : $value->value;
     }
 
+    public static function rule(): Rules\Enum
+    {
+        static::ensureImplementsInterface();
+        return new EnumValidationRule(static::class);
+    }
+
     public function label(): string
     {
+        static::ensureImplementsInterface();
         return static::labelFor($this);
     }
 
     public function withMeta(): array
     {
+        static::ensureImplementsInterface();
         return [];
     }
 
