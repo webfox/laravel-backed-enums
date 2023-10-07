@@ -2,7 +2,13 @@
 
 namespace Webfox\LaravelBackedEnums;
 
+use Illuminate\Database\Eloquent\JsonEncodingException;
 use Illuminate\Validation\Rules\Enum as EnumValidationRule;
+use function get_class;
+use function json_encode;
+use function json_last_error;
+use function json_last_error_msg;
+use const JSON_ERROR_NONE;
 
 /**
  * @implements \Webfox\LaravelBackedEnums\BackedEnum<string,string>
@@ -100,10 +106,16 @@ trait IsBackedEnum
         return $this->label();
     }
 
-    public function toJson($options = 0): array
+    public function toJson($options = 0): string
     {
         static::ensureImplementsInterface();
-        return $this->toArray();
+        $json = json_encode($this->toArray(), $options);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new JsonEncodingException('Error encoding enum ['.get_class($this).'] with value ['.$this->value.'] to JSON: '. json_last_error_msg());
+        }
+
+        return $json;
     }
 
     public function is(string|self $value): bool

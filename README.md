@@ -333,6 +333,40 @@ public function rules(): array
 }
 ```
 
+## Other Classes
+
+### AsFullEnumCollection
+This cast is similar to the Laravel built in `AsEnumCollection` cast but unlike the built in  will maintain the full `toArray` structure
+when converting to json.
+
+E.g. the Laravel built in `AsEnumCollection` cast will return the following json:
+```json
+["MILLIGRAMS", "GRAMS"]
+```
+This cast will return
+```json
+[
+  {
+    "name": "MILLIGRAMS",
+    "value": "MILLIGRAMS",
+    "label": "mg",
+    "meta": {
+      "background_color": "bg-green-100",
+      "text_color": "text-green-800"
+    }
+  },
+  {
+    "name": "GRAMS",
+    "value": "GRAMS",
+    "label": "g",
+    "meta": {
+      "background_color": "bg-red-100",
+      "text_color": "text-red-800"
+    }
+  }
+]
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
