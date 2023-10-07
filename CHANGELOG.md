@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-backed-enums` will be documented in this file.
 
+## v2.2.0 - 2023-10-07
+
+### What's Changed
+
+- Add EnumCollection support by @hailwood in https://github.com/webfox/laravel-backed-enums/pull/17   
+  Fix toJson method to actually return a json string instead of an array.   
+  Add new `AsFullEnumCollection` cast - See the readme for usage and a description of why this is useful.
+
+**Full Changelog**: https://github.com/webfox/laravel-backed-enums/compare/v2.1.1...v2.2.0
+
 ## v2.1.1 - 2023-10-04
 
 **Full Changelog**: https://github.com/webfox/laravel-backed-enums/compare/v2.1.0...v2.1.1
