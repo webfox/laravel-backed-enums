@@ -2,12 +2,25 @@
 
 All notable changes to `laravel-backed-enums` will be documented in this file.
 
+## v2.3.0 - 2024-03-12
+
+### What's Changed
+
+* Bumping to version 11 of the Laravel framework (ahead of launch tomorrow) by @csoutham in https://github.com/webfox/laravel-backed-enums/pull/23
+* Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/webfox/laravel-backed-enums/pull/19
+
+### New Contributors
+
+* @csoutham made their first contribution in https://github.com/webfox/laravel-backed-enums/pull/23
+
+**Full Changelog**: https://github.com/webfox/laravel-backed-enums/compare/v2.2.0...v2.3.0
+
 ## v2.2.0 - 2023-10-07
 
 ### What's Changed
 
-- Add EnumCollection support by @hailwood in https://github.com/webfox/laravel-backed-enums/pull/17   
-  Fix toJson method to actually return a json string instead of an array.   
+- Add EnumCollection support by @hailwood in https://github.com/webfox/laravel-backed-enums/pull/17
+  Fix toJson method to actually return a json string instead of an array.
   Add new `AsFullEnumCollection` cast - See the readme for usage and a description of why this is useful.
 
 **Full Changelog**: https://github.com/webfox/laravel-backed-enums/compare/v2.1.1...v2.2.0
