@@ -25,19 +25,19 @@ trait IsBackedEnum
     public static function options(): array
     {
         static::ensureImplementsInterface();
-        return array_map(fn($enum) => $enum->toArray(), self::cases());
+        return array_map(fn($enum) => $enum->toArray(), static::cases());
     }
 
     public static function names(): array
     {
         static::ensureImplementsInterface();
-        return array_map(fn($enum) => $enum->name, self::cases());
+        return array_map(fn($enum) => $enum->name, static::cases());
     }
 
     public static function values(): array
     {
         static::ensureImplementsInterface();
-        return array_map(fn($enum) => $enum->value, self::cases());
+        return array_map(fn($enum) => $enum->value, static::cases());
     }
 
     public static function map(): array
@@ -45,7 +45,7 @@ trait IsBackedEnum
         static::ensureImplementsInterface();
         $array = [];
 
-        foreach (self::cases() as $enum) {
+        foreach (static::cases() as $enum) {
             $array[$enum->value] = $enum->label();
         }
 
@@ -55,10 +55,10 @@ trait IsBackedEnum
     public static function labels(): array
     {
         static::ensureImplementsInterface();
-        return array_map(fn($enum) => self::labelFor($enum), self::cases());
+        return array_map(fn($enum) => static::labelFor($enum), static::cases());
     }
 
-    public static function labelFor(self $value): string
+    public static function labelFor(static $value): string
     {
         static::ensureImplementsInterface();
         $lang_key = sprintf(
@@ -118,19 +118,19 @@ trait IsBackedEnum
         return $json;
     }
 
-    public function is(string|self $value): bool
+    public function is(string|static $value): bool
     {
         static::ensureImplementsInterface();
         return $this->isAny([$value]);
     }
 
-    public function isA(string|self $value): bool
+    public function isA(string|static $value): bool
     {
         static::ensureImplementsInterface();
         return $this->is($value);
     }
 
-    public function isAn(string|self $value): bool
+    public function isAn(string|static $value): bool
     {
         static::ensureImplementsInterface();
         return $this->is($value);
@@ -148,19 +148,19 @@ trait IsBackedEnum
         return in_array($this, $values);
     }
 
-    public function isNot(string|self $value): bool
+    public function isNot(string|static $value): bool
     {
         static::ensureImplementsInterface();
         return !$this->isAny([$value]);
     }
 
-    public function isNotA(string|self $value): bool
+    public function isNotA(string|static $value): bool
     {
         static::ensureImplementsInterface();
         return $this->isNot($value);
     }
 
-    public function isNotAn(string|self $value): bool
+    public function isNotAn(string|static $value): bool
     {
         static::ensureImplementsInterface();
         return $this->isNot($value);
