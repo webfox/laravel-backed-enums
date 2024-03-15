@@ -29,6 +29,14 @@ class AsFullEnumCollection implements CastsAttributes
     }
 
     /**
+     * @param class-string<T> $class
+     */
+    public static function of(string $class): string
+    {
+        return static::class.':'.$class;
+    }
+
+    /**
      * @return \Illuminate\Support\Collection<T>|null
      */
     public function get(Model $model, string $key, mixed $value, array $attributes): ?Collection

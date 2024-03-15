@@ -19,8 +19,8 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public static function applicationBasePath(): string
     {
-
+        return __DIR__.'/../workbench';
     }
 }

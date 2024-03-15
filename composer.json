@@ -23,7 +23,7 @@
     "require-dev": {
         "laravel/pint": "^1.0",
         "nunomaduro/collision": "^6.1",
-        "nunomaduro/larastan": "^2.0.1",
+        "larastan/larastan": "^v2.9.2",
         "orchestra/testbench": "^8.0",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.1",
@@ -39,14 +39,33 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Webfox\\LaravelBackedEnums\\Tests\\": "tests"
+            "Webfox\\LaravelBackedEnums\\Tests\\": "tests",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
+        "format": "vendor/bin/pint",
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve"
+        ],
+        "lint": [
+            "@php vendor/bin/pint",
+            "@php vendor/bin/phpstan analyse"
+        ]
     },
     "config": {
         "sort-packages": true,
