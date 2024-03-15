@@ -25,19 +25,19 @@ trait IsBackedEnum
     public static function options(): array
     {
         static::ensureImplementsInterface();
-        return array_map(fn($enum) => $enum->toArray(), self::cases());
+        return array_map(fn($enum) => $enum->toArray(), static::cases());
     }
 
     public static function names(): array
     {
         static::ensureImplementsInterface();
-        return array_map(fn($enum) => $enum->name, self::cases());
+        return array_map(fn($enum) => $enum->name, static::cases());
     }
 
     public static function values(): array
     {
         static::ensureImplementsInterface();
-        return array_map(fn($enum) => $enum->value, self::cases());
+        return array_map(fn($enum) => $enum->value, static::cases());
     }
 
     public static function map(): array
@@ -45,7 +45,7 @@ trait IsBackedEnum
         static::ensureImplementsInterface();
         $array = [];
 
-        foreach (self::cases() as $enum) {
+        foreach (static::cases() as $enum) {
             $array[$enum->value] = $enum->label();
         }
 
@@ -55,7 +55,7 @@ trait IsBackedEnum
     public static function labels(): array
     {
         static::ensureImplementsInterface();
-        return array_map(fn($enum) => self::labelFor($enum), self::cases());
+        return array_map(fn($enum) => static::labelFor($enum), static::cases());
     }
 
     public static function labelFor(self $value): string
