@@ -26,10 +26,10 @@ enum VolumeUnitEnum: string implements BackedEnum
 {
     use IsBackedEnum;
 
-    case MILLIGRAMS = "MILLIGRAMS";
-    case GRAMS = "GRAMS";
-    case KILOGRAMS = "KILOGRAMS";
-    case TONNE = "TONNE";
+    case MILLIGRAMS = "milligrams";
+    case GRAMS = "grams";
+    case KILOGRAMS = "kilograms";
+    case TONNE = "tonne";
 }
 ```
 
@@ -112,7 +112,7 @@ returns
 [
     [
         'name'  => 'MILLIGRAMS'
-        'value' => 'MILLIGRAMS',
+        'value' => 'milligrams',
         'label' => 'mg',
         'meta'  => [
             'background_color' => 'bg-green-100',
@@ -121,7 +121,7 @@ returns
     ],
     [
         'name'  => 'GRAMS',
-        'value' => 'GRAMS',
+        'value' => 'grams',
         'label' => 'g',
         'meta'  => [
             'background_color' => 'bg-red-100',
@@ -167,10 +167,10 @@ returns
 
 ```php
 [
-    'MILLIGRAMS',
-    'GRAMS',
-    'KILOGRAMS',
-    'TONNE',
+    'milligrams',
+    'grams',
+    'killograms',
+    'tonne',
 ]
 ```
 
@@ -209,10 +209,10 @@ returns
 
 ```php
 [
-    'MILLIGRAMS'=>'mg',
-    'GRAMS'     =>'g',
-    'KILOGRAMS' =>'kg',
-    'TONNE'    =>'t',
+    'MILLIGRAMS' => 'mg',
+    'GRAMS'      => 'g',
+    'KILOGRAMS'  => 'kg',
+    'TONNE'      => 't',
 ]
 ```
 
@@ -231,10 +231,10 @@ returns
 ```php
 [
     'name'  => 'MILLIGRAMS'
-    'value' => 'MILLIGRAMS',
+    'value' => 'milligrams',
     'label' => 'mg',
     'meta'  => [
-        'color' => 'bg-green-100',
+        'color'      => 'bg-green-100',
         'text_color' => 'text-green-800',
     ],
 ]
@@ -253,20 +253,12 @@ VolumeUnitEnum::MILLIGRAMS->toHtml();
 returns
 
 ```php
-[
-    'name'  => 'MILLIGRAMS'
-    'value' => 'MILLIGRAMS',
-    'label' => 'mg',
-    'meta'  => [
-        'color' => 'bg-green-100',
-        'text_color' => 'text-green-800',
-    ],
-]
+mg
 ```
 
 ### toJson
 
-An alias for toArray.
+Returns a json string represention of the toArray return value.
 
 ### is/isA/isAn
 
@@ -336,7 +328,7 @@ public function rules(): array
 ## Other Classes
 
 ### AsFullEnumCollection
-This cast is similar to the Laravel built in `AsEnumCollection` cast but unlike the built in  will maintain the full `toArray` structure
+This cast is similar to the Laravel built in `AsEnumCollection` cast but unlike the built-in  will maintain the full `toArray` structure
 when converting to json.
 
 E.g. the Laravel built in `AsEnumCollection` cast will return the following json:
