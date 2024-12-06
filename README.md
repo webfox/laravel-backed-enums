@@ -111,7 +111,7 @@ returns
 ```php
 [
     [
-        'name'  => 'MILLIGRAMS'
+        'name'  => 'MILLIGRAMS',
         'value' => 'milligrams',
         'label' => 'mg',
         'meta'  => [
