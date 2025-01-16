@@ -5,7 +5,7 @@ namespace Webfox\LaravelBackedEnums;
 use Illuminate\Support\Str;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Attribute\AsCommand;
-use function App\Console\Commands\class_basename;
+
 
 #[AsCommand(name: 'make:laravel-backed-enum')]
 class LaravelBackedEnumMakeCommand extends GeneratorCommand
