@@ -2,7 +2,7 @@
 
 namespace Webfox\LaravelBackedEnums;
 
-use Illuminate\Support\Str;
+use InvalidArgumentException;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Attribute\AsCommand;
 
@@ -53,8 +53,9 @@ class LaravelBackedEnumMakeCommand extends GeneratorCommand
             'enumType' => [
                 'What is the type of the enum?',
                 match (strtolower($this->argument('enumType'))) {
-                    'int'   => 'int',
-                    default => 'string',
+                    'int', 'integer' => 'int',
+                    'str', 'string'  => 'string',
+                    default          => throw new InvalidArgumentException('Enum type must be either "int" or "string"'),
                 },
             ],
             ...parent::promptForMissingArgumentsUsing(),
@@ -63,12 +64,10 @@ class LaravelBackedEnumMakeCommand extends GeneratorCommand
 
     protected function getNameInput(): string
     {
-        $name = trim($this->argument('name') . 'Enum');
-
-        if (Str::endsWith($name, '.php')) {
-            return Str::substr($name, 0, -4);
+        $name = trim($this->argument('name'));
+        if (!preg_match('/^[A-Za-z_\x7f-\xff][A-Za-z0-9_\x7f-\xff]*$/', $name)) {
+            throw new InvalidArgumentException('Invalid enum name format');
         }
-
-        return $name;
+        return $name . 'Enum';
     }
 }

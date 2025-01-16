@@ -15,18 +15,27 @@ composer require webfox/laravel-backed-enums
 
 ### Make Command
 
-You can use the `make:laravel-backed-enum` command to create a new enum.
+Conveniently create a new backed enum using the make command.
 
-```bash
+#### Command:
+
+```Bash
 php artisan make:laravel-backed-enum {name} {enumType}
 ```
 
-This will create a new enum in the `app/Enums` directory.
+#### Arguments:
 
-The command takes in two arguments:
+* `{name}`: The name of the enum class to be created (e.g., OrderStatus). The command will automatically append "Enum" to the name (e.g., OrderStatusEnum).
+* `{enumType}`: The underlying data type for the enum. Can be either int or string (defaults to string if not specified).
+Example Usage:
 
-- name: The name of the enum
-- enumType: The type of the enum. This can be either `string` or `int`. Default is `string`.
+To create an enum named OrderStatusEnum backed by integers:
+
+``` Bash
+php artisan make:laravel-backed-enum OrderStatus int
+```
+
+This will generate an OrderStatusEnum class in the `app/Enums` directory.
 
 ### Setup your enum
 
