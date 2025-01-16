@@ -13,6 +13,21 @@ composer require webfox/laravel-backed-enums
 
 ## Usage
 
+### Make Command
+
+You can use the `make:laravel-backed-enum` command to create a new enum.
+
+```bash
+php artisan make:laravel-backed-enum {name} {enumType}
+```
+
+This will create a new enum in the `app/Enums` directory.
+
+The command takes in two arguments:
+
+- name: The name of the enum
+- enumType: The type of the enum. This can be either `string` or `int`. Default is `string`.
+
 ### Setup your enum
 
 The enum you create must implement the `BackedEnum` interface and also use the `IsBackedEnum` trait.
@@ -316,6 +331,7 @@ The backed enums may be validated using Laravel's standard Enum validation rule 
 This method a shortcut for the validation rule.
 
 #### Usage
+
 ```
 public function rules(): array
 {
@@ -328,34 +344,41 @@ public function rules(): array
 ## Other Classes
 
 ### AsFullEnumCollection
-This cast is similar to the Laravel built in `AsEnumCollection` cast but unlike the built-in  will maintain the full `toArray` structure
+
+This cast is similar to the Laravel built in `AsEnumCollection` cast but unlike the built-in will maintain the full `toArray` structure
 when converting to json.
 
 E.g. the Laravel built in `AsEnumCollection` cast will return the following json:
-```json
-["MILLIGRAMS", "GRAMS"]
-```
-This cast will return
+
 ```json
 [
-  {
-    "name": "MILLIGRAMS",
-    "value": "MILLIGRAMS",
-    "label": "mg",
-    "meta": {
-      "background_color": "bg-green-100",
-      "text_color": "text-green-800"
+    "MILLIGRAMS",
+    "GRAMS"
+]
+```
+
+This cast will return
+
+```json
+[
+    {
+        "name": "MILLIGRAMS",
+        "value": "MILLIGRAMS",
+        "label": "mg",
+        "meta": {
+            "background_color": "bg-green-100",
+            "text_color": "text-green-800"
+        }
+    },
+    {
+        "name": "GRAMS",
+        "value": "GRAMS",
+        "label": "g",
+        "meta": {
+            "background_color": "bg-red-100",
+            "text_color": "text-red-800"
+        }
     }
-  },
-  {
-    "name": "GRAMS",
-    "value": "GRAMS",
-    "label": "g",
-    "meta": {
-      "background_color": "bg-red-100",
-      "text_color": "text-red-800"
-    }
-  }
 ]
 ```
 
