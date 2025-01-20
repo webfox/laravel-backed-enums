@@ -15,7 +15,7 @@ composer require webfox/laravel-backed-enums
 
 ### Make Command
 
-Conveniently create a new backed enum using the make command.
+Conveniently create a new laravel backed enum using the existing enum make command.
 
 #### Command:
 
@@ -51,7 +51,7 @@ php artisan make:enum OrderStatus
 
 This will generate an OrderStatusEnums in the `app/Enums` directory.
 
-### Setup your enum
+### Upgrade your existing enums
 
 The enum you create must implement the `BackedEnum` interface and also use the `IsBackedEnum` trait.
 The interface is required for Laravel to cast your enum correctly and the trait is what gives your enum its superpowers.

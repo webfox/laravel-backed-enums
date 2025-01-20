@@ -11,7 +11,7 @@ enum {{ class }}: {{ type }} implements BackedEnum
 
     /**
      * Add your Enums below using.
-     * e.g. case Standard = 'standard';
+     * e.g. case Standard = {{ value }};
      */
 
 }

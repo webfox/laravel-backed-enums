@@ -18,4 +18,9 @@ class TestCase extends Orchestra
             LaravelBackedEnumsServiceProvider::class,
         ];
     }
+
+    public static function applicationBasePath(): string
+    {
+        return __DIR__.'/../workbench';
+    }
 }

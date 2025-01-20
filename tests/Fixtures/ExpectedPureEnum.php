@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Workbench\App\Enums;
 
 enum PureEnum
 {

@@ -21,9 +21,7 @@ class LaravelBackedEnumsServiceProvider extends PackageServiceProvider
 
         /** @noinspection PhpFullyQualifiedNameUsageInspection */
         if (class_exists(\Illuminate\Foundation\Console\EnumMakeCommand::class)) {
-            $package->hasConsoleCommand(
-                LaravelBackedEnumMakeCommand::class,
-            );
+            $package->hasConsoleCommand(LaravelBackedEnumMakeCommand::class);
         }
     }
 }

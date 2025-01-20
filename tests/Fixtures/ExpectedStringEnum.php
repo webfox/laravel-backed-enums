@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Workbench\App\Enums;
 
 use Webfox\LaravelBackedEnums\BackedEnum;
 use Webfox\LaravelBackedEnums\IsBackedEnum;

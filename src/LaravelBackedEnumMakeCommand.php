@@ -18,11 +18,31 @@ class LaravelBackedEnumMakeCommand extends EnumMakeCommand
         return parent::getStub();
     }
 
+    protected function buildClass($name): array|string
+    {
+        if ($this->option('string') || $this->option('int')) {
+            return str_replace(
+                ['{{ value }}'],
+                $this->option('string') ? '\'standard\'' : '0',
+                parent::buildClass($name)
+            );
+        }
+        return parent::buildClass($name);
+    }
+
+
     protected function resolveStubPath($stub): string
     {
-        return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
-            ? $customPath
-            : __DIR__ . "/../" . $stub;
+
+        if (file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))) {
+            return $customPath;
+        }
+
+        if (file_exists(__DIR__ . "/../" . $stub)) {
+            return __DIR__ . "/../" . $stub;
+        }
+
+        return parent::resolveStubPath($stub);
     }
 
     protected function getNameInput(): string
