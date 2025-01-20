@@ -1,11 +1,11 @@
 <?php
 
-namespace {{ namespace }};
+namespace App;
 
 use Webfox\LaravelBackedEnums\BackedEnum;
 use Webfox\LaravelBackedEnums\IsBackedEnum;
 
-enum {{ name }}: {{ enumType }} implements BackedEnum
+enum IntEnum: int implements BackedEnum
 {
     use IsBackedEnum;
 
@@ -13,6 +13,5 @@ enum {{ name }}: {{ enumType }} implements BackedEnum
      * Add your Enums below using.
      * e.g. case Standard = 'standard';
      */
-
 
 }
