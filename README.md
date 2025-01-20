@@ -20,22 +20,36 @@ Conveniently create a new backed enum using the make command.
 #### Command:
 
 ```Bash
-php artisan make:laravel-backed-enum {name} {enumType}
+php artisan make:enum {name} {type?} 
 ```
 
 #### Arguments:
 
 * `{name}`: The name of the enum class to be created (e.g., OrderStatus). The command will automatically append "Enum" to the name (e.g., OrderStatusEnum).
-* `{enumType}`: The underlying data type for the enum. Can be either int or string (defaults to string if not specified).
-Example Usage:
+* `{type?}`: The underlying data type for the enum. Can be either --int --string or if not specified it will be a pure enum.
+* `{--force}`: Overwrite the enum if it already exists.
+  Example Usage:
 
 To create an enum named OrderStatusEnum backed by integers:
 
 ``` Bash
-php artisan make:laravel-backed-enum OrderStatus int
+php artisan make:enum OrderStatus --int
 ```
 
-This will generate an OrderStatusEnum class in the `app/Enums` directory.
+To create an enum named OrderStatusEnum backed by strings:
+
+``` Bash
+php artisan make:enum OrderStatus --string
+```
+
+To create a pure enum named OrderStatusEnum:
+
+``` Bash
+php artisan make:enum OrderStatus
+
+```
+
+This will generate an OrderStatusEnums in the `app/Enums` directory.
 
 ### Setup your enum
 
