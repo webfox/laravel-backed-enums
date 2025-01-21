@@ -6,8 +6,8 @@ parameters:
     paths:
         - src
         - config
-   ignoreErrors:
-       - '#^Class Webfox\\\LaravelBackedEnums\\\LaravelBackedEnumMakeCommand extends unknown class Illuminate\\\Foundation\\\Console\\\EnumMakeCommand\.$#'
+    ignoreErrors:
+        - '#^Class Webfox\\\LaravelBackedEnums\\\LaravelBackedEnumMakeCommand extends unknown class Illuminate\\\Foundation\\\Console\\\EnumMakeCommand\.$#'
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkModelProperties: true
