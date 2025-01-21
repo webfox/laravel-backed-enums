@@ -15,12 +15,12 @@ composer require webfox/laravel-backed-enums
 
 ### Make Command
 
-Conveniently create a new laravel backed enum using the existing enum make command.
+Creating a new Laravel Backed Enum is easy with the make:enum command.
 
 #### Command:
 
 ```Bash
-php artisan make:enum {name} {type?} 
+php artisan make:enum {name} --string # or --int
 ```
 
 #### Arguments:

@@ -5,7 +5,6 @@ namespace Webfox\LaravelBackedEnums;
 use InvalidArgumentException;
 use Illuminate\Foundation\Console\EnumMakeCommand;
 
-
 class LaravelBackedEnumMakeCommand extends EnumMakeCommand
 {
     protected $description = 'Create a new laravel backed enum';
