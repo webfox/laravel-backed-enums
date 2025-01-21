@@ -5,13 +5,28 @@ use function Pest\Laravel\artisan;
 use function Orchestra\Testbench\workbench_path;
 
 it('can create an enum', function () {
+
+
+    /** @noinspection PhpFullyQualifiedNameUsageInspection */
+    if (!class_exists(\Illuminate\Foundation\Console\EnumMakeCommand::class)) return;
+
+    if (File::exists(workbench_path('app/Enums/TestEnum.php'))) {
+        File::delete(workbench_path('app/Enums/TestEnum.php'));
+    }
     artisan('make:enum TestEnum -s')
         ->execute();
+
+
+
+
 
     expect(workbench_path('app/Enums/TestEnum.php'))->toBeFile();
 });
 
 it('can make pure enum', function () {
+
+    /** @noinspection PhpFullyQualifiedNameUsageInspection */
+    if (!class_exists(\Illuminate\Foundation\Console\EnumMakeCommand::class)) return;
 
     if (File::exists(workbench_path('app/Enums/PureEnum.php'))) {
         File::delete(workbench_path('app/Enums/PureEnum.php'));
@@ -30,6 +45,9 @@ it('can make pure enum', function () {
 
 it('can make string enum', function () {
 
+    /** @noinspection PhpFullyQualifiedNameUsageInspection */
+    if (!class_exists(\Illuminate\Foundation\Console\EnumMakeCommand::class)) return;
+
     if (File::exists(workbench_path('app/Enums/StringEnum.php'))) {
         File::delete(workbench_path('app/Enums/StringEnum.php'));
     }
@@ -46,6 +64,10 @@ it('can make string enum', function () {
 });
 
 it('can make int enum', function () {
+
+    /** @noinspection PhpFullyQualifiedNameUsageInspection */
+    if (!class_exists(\Illuminate\Foundation\Console\EnumMakeCommand::class)) return;
+
     if (File::exists(workbench_path('app/Enums/IntEnum.php'))) {
         File::delete(workbench_path('app/Enums/IntEnum.php'));
     }
