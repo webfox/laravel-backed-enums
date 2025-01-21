@@ -5,6 +5,7 @@ on:
     paths:
       - '**.php'
       - 'phpstan.neon.dist'
+  workflow_dispatch:
 
 jobs:
   phpstan:
@@ -21,6 +22,18 @@ jobs:
 
       - name: Install composer dependencies
         uses: ramsey/composer-install@v3
+        with:
+          dependency-versions: highest
+          composer-options: --ignore-platform-reqs
+
+      - name: Require Laravel 11
+        run: composer require laravel/framework:^11.0 --no-update
+
+      - name: Install composer dependencies
+        uses: ramsey/composer-install@v3
+        with:
+          dependency-versions: highest
+          composer-options: --no-dev
 
       - name: Run PHPStan
         run: ./vendor/bin/phpstan --error-format=github
