@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-backed-enums` will be documented in this file.
 
+## v2.4.0 - 2025-01-21
+
+### What's Changed
+
+* Add make command by @Jim-Webfox in https://github.com/webfox/laravel-backed-enums/pull/40
+
+**Full Changelog**: https://github.com/webfox/laravel-backed-enums/compare/v2.3.1...v2.4.0
+
 ## v2.3.1 - 2024-03-15
 
 ### What's Changed
