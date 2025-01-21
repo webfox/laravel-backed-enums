@@ -24,7 +24,7 @@ jobs:
         uses: ramsey/composer-install@v3
 
       - name: Require Laravel 11
-        run: composer require laravel/framework:^11.0
+        run: composer require laravel/framework:^11.0 --with-all-dependencies
 
       - name: Install composer dependencies
         uses: ramsey/composer-install@v3
