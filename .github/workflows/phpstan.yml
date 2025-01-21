@@ -24,6 +24,7 @@ jobs:
         uses: ramsey/composer-install@v3
         with:
           dependency-versions: 'highest'
+          ignore-cache: true
 
       - name: Run PHPStan
         run: ./vendor/bin/phpstan --error-format=github
