@@ -1,0 +1,17 @@
+<?php
+
+namespace {{ namespace }};
+
+use Webfox\LaravelBackedEnums\BackedEnum;
+use Webfox\LaravelBackedEnums\IsBackedEnum;
+
+enum {{ class }}: {{ type }} implements BackedEnum
+{
+    use IsBackedEnum;
+
+    /**
+     * Add your Enums below using.
+     * e.g. case Standard = {{ value }};
+     */
+
+}

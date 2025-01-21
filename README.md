@@ -13,7 +13,45 @@ composer require webfox/laravel-backed-enums
 
 ## Usage
 
-### Setup your enum
+### Make Command
+
+Creating a new Laravel Backed Enum is easy with the make:enum command.
+
+#### Command:
+
+```Bash
+php artisan make:enum {name} --string # or --int
+```
+
+#### Arguments:
+
+* `{name}`: The name of the enum class to be created (e.g., OrderStatus). The command will automatically append "Enum" to the name (e.g., OrderStatusEnum).
+* `{type?}`: The underlying data type for the enum. Can be either --int --string or if not specified it will be a pure enum.
+* `{--force}`: Overwrite the enum if it already exists.
+  Example Usage:
+
+To create an enum named OrderStatusEnum backed by integers:
+
+``` Bash
+php artisan make:enum OrderStatus --int
+```
+
+To create an enum named OrderStatusEnum backed by strings:
+
+``` Bash
+php artisan make:enum OrderStatus --string
+```
+
+To create a pure enum named OrderStatusEnum:
+
+``` Bash
+php artisan make:enum OrderStatus
+
+```
+
+This will generate an OrderStatusEnums in the `app/Enums` directory.
+
+### Upgrade your existing enums
 
 The enum you create must implement the `BackedEnum` interface and also use the `IsBackedEnum` trait.
 The interface is required for Laravel to cast your enum correctly and the trait is what gives your enum its superpowers.
@@ -316,6 +354,7 @@ The backed enums may be validated using Laravel's standard Enum validation rule 
 This method a shortcut for the validation rule.
 
 #### Usage
+
 ```
 public function rules(): array
 {
@@ -328,34 +367,41 @@ public function rules(): array
 ## Other Classes
 
 ### AsFullEnumCollection
-This cast is similar to the Laravel built in `AsEnumCollection` cast but unlike the built-in  will maintain the full `toArray` structure
+
+This cast is similar to the Laravel built in `AsEnumCollection` cast but unlike the built-in will maintain the full `toArray` structure
 when converting to json.
 
 E.g. the Laravel built in `AsEnumCollection` cast will return the following json:
-```json
-["MILLIGRAMS", "GRAMS"]
-```
-This cast will return
+
 ```json
 [
-  {
-    "name": "MILLIGRAMS",
-    "value": "MILLIGRAMS",
-    "label": "mg",
-    "meta": {
-      "background_color": "bg-green-100",
-      "text_color": "text-green-800"
+    "MILLIGRAMS",
+    "GRAMS"
+]
+```
+
+This cast will return
+
+```json
+[
+    {
+        "name": "MILLIGRAMS",
+        "value": "MILLIGRAMS",
+        "label": "mg",
+        "meta": {
+            "background_color": "bg-green-100",
+            "text_color": "text-green-800"
+        }
+    },
+    {
+        "name": "GRAMS",
+        "value": "GRAMS",
+        "label": "g",
+        "meta": {
+            "background_color": "bg-red-100",
+            "text_color": "text-red-800"
+        }
     }
-  },
-  {
-    "name": "GRAMS",
-    "value": "GRAMS",
-    "label": "g",
-    "meta": {
-      "background_color": "bg-red-100",
-      "text_color": "text-red-800"
-    }
-  }
 ]
 ```
 

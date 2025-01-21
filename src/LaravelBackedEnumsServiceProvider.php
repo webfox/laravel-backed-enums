@@ -17,5 +17,11 @@ class LaravelBackedEnumsServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-backed-enums')
             ->hasConfigFile();
+
+
+        /** @noinspection PhpFullyQualifiedNameUsageInspection */
+        if (class_exists(\Illuminate\Foundation\Console\EnumMakeCommand::class)) {
+            $package->hasConsoleCommand(LaravelBackedEnumMakeCommand::class);
+        }
     }
 }
