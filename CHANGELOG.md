@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-backed-enums` will be documented in this file.
 
+## v2.5.0 - 2025-02-25
+
+### What's Changed
+
+* Laravel 12 Support by @hailwood in https://github.com/webfox/laravel-backed-enums/pull/43
+
+**Full Changelog**: https://github.com/webfox/laravel-backed-enums/compare/v2.4.0...v2.5.0
+
 ## v2.4.0 - 2025-01-21
 
 ### What's Changed
