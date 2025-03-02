@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-backed-enums` will be documented in this file.
 
+## v2.6.0 - 2025-03-02
+
+### What's Changed
+
+* Add Laravel Idea support. by @hailwood in https://github.com/webfox/laravel-backed-enums/pull/44
+
+**Full Changelog**: https://github.com/webfox/laravel-backed-enums/compare/v2.5.0...v2.6.0
+
 ## v2.5.0 - 2025-02-25
 
 ### What's Changed
