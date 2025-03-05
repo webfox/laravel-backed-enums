@@ -2,31 +2,21 @@
   "$schema": "https://laravel-ide.com/schema/laravel-ide-v2.json",
   "codeGenerations": [
     {
-      "id": "webfox.create-string-backed-enum",
-      "name": "Create String Backed Enum",
+      "id": "webfox.create-backed-enum",
+      "name": "Create Backed Enum",
       "classSuffix": "Enum",
-      "files": [
+      "parameters": [
         {
-          "appNamespace": "Enums",
-          "name": "${INPUT_CLASS|className|upperCamelCase}.php",
-          "template": {
-            "type": "stub",
-            "path": "/stubs/laravel-backed-enum.stub",
-            "fallbackPath": "stubs/laravel-backed-enum.stub",
-            "parameters": {
-              "{{ class }}": "${INPUT_CLASS|className|upperCamelCase}",
-              "{{ namespace }}": "${INPUT_FQN|namespace}",
-              "{{ value }}": "'standard'",
-              "{{ type }}": "string"
-            }
-          }
+          "id": "webfox.create-backed-enum:type",
+          "name": "Type",
+          "type": "combobox",
+          "options": {
+            "string": "string",
+            "int": "int"
+          },
+          "variable": "TYPE"
         }
-      ]
-    },
-    {
-      "id": "webfox.create-int-backed-enum",
-      "name": "Create Integer Backed Enum",
-      "classSuffix": "Enum",
+      ],
       "files": [
         {
           "appNamespace": "Enums",
@@ -38,8 +28,8 @@
             "parameters": {
               "{{ class }}": "${INPUT_CLASS|className|upperCamelCase}",
               "{{ namespace }}": "${INPUT_FQN|namespace}",
-              "{{ value }}": "0",
-              "{{ type }}": "int"
+              "{{ value }}": "${TYPE|replace:string,'standard'|replace:int,0}",
+              "{{ type }}": "${TYPE}"
             }
           }
         }
