@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-backed-enums` will be documented in this file.
 
+## v2.6.1 - 2025-03-05
+
+### What's Changed
+
+* ide.json: one code generation instead of two by @adelf in https://github.com/webfox/laravel-backed-enums/pull/45
+
+### New Contributors
+
+* @adelf made their first contribution in https://github.com/webfox/laravel-backed-enums/pull/45
+
+**Full Changelog**: https://github.com/webfox/laravel-backed-enums/compare/v2.6.0...v2.6.1
+
 ## v2.6.0 - 2025-03-02
 
 ### What's Changed
