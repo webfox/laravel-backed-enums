@@ -2,12 +2,12 @@
   "$schema": "https://laravel-ide.com/schema/laravel-ide-v2.json",
   "codeGenerations": [
     {
-      "id": "webfox.create-string-backed-enum",
+      "id": "webfox.create-backed-enum",
       "name": "Create Backed Enum",
       "classSuffix": "Enum",
       "parameters": [
         {
-          "id": "webfox.create-string-backed-enum:type",
+          "id": "webfox.create-backed-enum:type",
           "name": "Type",
           "type": "combobox",
           "options": {
